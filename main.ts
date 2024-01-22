@@ -1,7 +1,7 @@
 function Jumpy (mySprite: Sprite) {
     if (jump < 2) {
         jump += 1
-        mySprite.setVelocity(-31, -150)
+        mySprite.setVelocity(2, -10)
         animation.runImageAnimation(
         mySprite,
         [img`
@@ -22,7 +22,7 @@ function Jumpy (mySprite: Sprite) {
             b b c c c d d d d 5 5 5 b b . . 
             . . . c c c c c c c c b b . . . 
             `],
-        500,
+        100,
         false
         )
     }
