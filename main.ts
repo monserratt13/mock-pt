@@ -5,24 +5,58 @@ function Jumpy (mySprite: Sprite) {
         animation.runImageAnimation(
         mySprite,
         [img`
-            . . . . . . . . . . b 5 b . . . 
-            . . . . . . . . . b 5 b . . . . 
-            . . . . . . b b b b b b . . . . 
-            . . . . . b b 5 5 5 5 5 b . . . 
-            . . . . b b 5 d 1 f 5 d 4 c . . 
-            . . . . b 5 5 1 f f d d 4 4 4 b 
-            . . . . b 5 5 d f b 4 4 4 4 b . 
-            . . . b d 5 5 5 5 4 4 4 4 b . . 
-            . . b d d 5 5 5 5 5 5 5 5 b . . 
-            . b d d d d 5 5 5 5 5 5 5 5 b . 
-            b d d d b b b 5 5 5 5 5 5 5 b . 
-            c d d b 5 5 d c 5 5 5 5 5 5 b . 
-            c b b d 5 d c d 5 5 5 5 5 5 b . 
-            . b 5 5 b c d d 5 5 5 5 5 d b . 
-            b b c c c d d d d 5 5 5 b b . . 
+            . . . . . . . . . . b 1 b . . . 
+            . . . . . . . 8 8 8 8 8 . . . . 
+            . . . . 8 8 8 8 8 8 8 8 8 8 . . 
+            . . . 8 8 8 8 8 8 8 8 8 8 8 . . 
+            . . 8 8 8 8 1 d 7 f 1 d 4 c . . 
+            . . . . b 1 1 7 f f d d 4 4 4 b 
+            . . . . b 1 1 d f b 4 4 4 4 b . 
+            . . . b d 1 1 1 1 4 4 4 4 b . . 
+            . . b d d 1 1 1 1 1 1 1 1 b . . 
+            . b d d d d 1 1 1 1 1 1 1 1 b . 
+            b d d d b b b 1 1 1 1 1 1 1 b . 
+            c d d b 1 1 d c 1 1 1 1 1 1 b . 
+            c b b d 1 d c d 1 1 1 1 1 1 b . 
+            . b 1 1 b c d d 1 1 1 1 1 d b . 
+            b b c c c d d d d 1 1 1 b b . . 
             . . . c c c c c c c c b b . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            `,img`
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
+            . . . . . . . . . . . . . . . . 
             `],
-        500,
+        100,
         false
         )
     }
@@ -154,7 +188,7 @@ scene.setBackgroundImage(img`
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
     dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd
     `)
-tiles.setCurrentTilemap(tilemap`level1`)
+tiles.setCurrentTilemap(tilemap`level3`)
 mySprite = sprites.create(img`
     . . . . . . . . . . b 1 b . . . 
     . . . . . . . 8 8 8 8 8 8 . . . 
