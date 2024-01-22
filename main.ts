@@ -1,4 +1,4 @@
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+function Jumpy (mySprite: Sprite) {
     if (jump < 2) {
         jump += 1
         mySprite.setVelocity(-31, -150)
@@ -26,6 +26,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         false
         )
     }
+}
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    Jumpy(mySprite)
 })
 let jump = 0
 let mySprite: Sprite = null
