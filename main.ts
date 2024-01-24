@@ -1,6 +1,6 @@
 function Jumpy (mySprite: Sprite) {
-    if (jump < 100) {
-        jump += 1
+    if (info.score() <= 20) {
+        info.changeScoreBy(1)
         mySprite.vy = -100
         animation.runImageAnimation(
         mySprite,
@@ -57,14 +57,13 @@ function Jumpy (mySprite: Sprite) {
             . . . . . . . . . . . . . . . . 
             `],
         2000,
-        true
+        false
         )
     }
 }
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Jumpy(mySprite)
 })
-let jump = 0
 let mySprite: Sprite = null
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -207,7 +206,7 @@ mySprite = sprites.create(img`
     . . . . c c d d d 1 1 1 b b . . 
     . . . . . . c c c c c b b . . . 
     `, SpriteKind.Player)
-mySprite.ax = 30
+mySprite.ax = 20
 mySprite.ay = 300
-jump = 0
+info.setScore(0)
 scene.cameraFollowSprite(mySprite)
