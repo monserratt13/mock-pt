@@ -2,8 +2,8 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, lo
     game.gameOver(false)
 })
 function Jumpy (mySprite: Sprite) {
-    if (info.score() <= 20) {
-        info.changeScoreBy(1)
+    if (info.score() > 0) {
+        info.changeScoreBy(-1)
         mySprite.vy = -100
         animation.runImageAnimation(
         mySprite,
@@ -217,7 +217,7 @@ mySprite = sprites.create(img`
     `, SpriteKind.Player)
 mySprite.ax = 20
 mySprite.ay = 300
-info.setScore(0)
+info.setScore(15)
 scene.cameraFollowSprite(mySprite)
 let myEnemy = sprites.create(img`
     . . . . . . . . . . b 2 b . . . 
