@@ -1,7 +1,7 @@
 function Jumpy (mySprite: Sprite) {
     if (jump < 2) {
         jump += 1
-        mySprite.vx = -150
+        mySprite.vy = -100
         animation.runImageAnimation(
         mySprite,
         [img`
@@ -207,5 +207,6 @@ mySprite = sprites.create(img`
     . . . . c c d d d 1 1 1 b b . . 
     . . . . . . c c c c c b b . . . 
     `, SpriteKind.Player)
+mySprite.ay = 100
 jump = 0
 scene.cameraFollowSprite(mySprite)
