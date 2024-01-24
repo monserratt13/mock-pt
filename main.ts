@@ -1,7 +1,7 @@
 function Jumpy (mySprite: Sprite) {
-    if (jump < 2) {
+    if (jump < 10) {
         jump += 1
-        mySprite.vx = -150
+        mySprite.vy = -100
         animation.runImageAnimation(
         mySprite,
         [img`
@@ -57,7 +57,7 @@ function Jumpy (mySprite: Sprite) {
             . . . . . . . . . . . . . . . . 
             `],
         100,
-        false
+        true
         )
     }
 }
@@ -207,5 +207,7 @@ mySprite = sprites.create(img`
     . . . . c c d d d 1 1 1 b b . . 
     . . . . . . c c c c c b b . . . 
     `, SpriteKind.Player)
+mySprite.ax = 10
+mySprite.ay = 300
 jump = 0
 scene.cameraFollowSprite(mySprite)
