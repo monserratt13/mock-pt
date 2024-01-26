@@ -199,10 +199,10 @@ scene.setBackgroundImage(img`
 tiles.setCurrentTilemap(tilemap`level3`)
 mySprite = sprites.create(img`
     . . . . . . . . . . b 1 b . . . 
-    . . . . . . . 8 8 8 8 8 8 . . . 
-    . . . . . . 8 8 8 8 8 8 8 . . . 
-    . . 8 8 8 8 8 8 8 8 8 8 8 . . . 
-    . . 8 8 8 8 8 d 7 f 1 d 4 c . . 
+    . . . . . . . a a a a a a . . . 
+    . . . . . . a a a a a a a . . . 
+    . . a a a a a a a a a a a . . . 
+    . . a a a a a d 7 f 1 d 4 c . . 
     . . . . b 1 1 7 f f d d 4 4 4 b 
     . . . . b 1 1 d f d 4 4 4 4 b . 
     . . . b d 1 1 1 1 4 4 4 4 b . . 
@@ -221,10 +221,10 @@ tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 6))
 scene.cameraFollowSprite(mySprite)
 let myEnemy = sprites.create(img`
     . . . . . . . . . . b 2 b . . . 
-    . . . . . . . 8 8 8 8 8 8 . . . 
-    . . . . . . 8 8 8 8 8 8 8 . . . 
-    . . 8 8 8 8 8 8 8 8 8 8 8 . . . 
-    . . 8 8 8 8 8 d 7 f 2 d 4 c . . 
+    . . . . . . . a a a a a a . . . 
+    . . . . . . a a a a a a a . . . 
+    . . a a a a a a a a a a a . . . 
+    . . a a a a a d 7 f 2 d 4 c . . 
     . . . . b 2 2 7 f f d d 4 4 4 b 
     . . . . b 2 2 d f d 4 4 4 4 b . 
     . . . b d 2 2 2 2 4 4 4 4 b . . 
@@ -240,6 +240,22 @@ let myEnemy = sprites.create(img`
 myEnemy.follow(mySprite, 70)
 myEnemy.setPosition(0, 0)
 info.setScore(15)
-if (mySprite.overlapsWith(myEnemy)) {
-    sprites.destroy(mySprite)
-}
+let coin = sprites.create(img`
+    . . . . . f f f f f f . . . . . 
+    . . . f f 5 5 5 5 5 5 f f . . . 
+    . . f 5 5 9 9 9 9 9 9 5 5 f . . 
+    . f 5 9 3 5 5 5 5 5 5 9 9 5 f . 
+    . f 5 3 3 3 9 9 9 9 5 5 9 5 f . 
+    f 5 9 5 3 5 9 5 5 9 5 5 5 9 5 f 
+    f 5 9 5 5 5 9 5 5 9 5 5 5 9 5 f 
+    f 5 9 5 5 5 9 5 5 9 5 5 5 9 5 f 
+    f 5 9 5 5 5 9 5 5 9 5 5 5 9 5 f 
+    f 5 9 5 5 5 9 5 5 9 5 5 5 9 5 f 
+    f 5 9 5 5 5 9 5 5 9 5 5 3 9 5 f 
+    . f 5 9 5 5 9 9 9 9 5 3 3 3 f . 
+    . f 5 9 9 5 5 5 5 5 5 9 3 5 f . 
+    . . f 5 5 9 9 9 9 9 9 5 5 f . . 
+    . . . f f 5 5 5 5 5 5 f f . . . 
+    . . . . . f f f f f f . . . . . 
+    `, SpriteKind.Projectile)
+coin.setPosition(0, 0)
