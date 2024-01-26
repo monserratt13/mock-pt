@@ -215,7 +215,7 @@ mySprite = sprites.create(img`
     . . . . c c d d d 1 1 1 b b . . 
     . . . . . . c c c c c b b . . . 
     `, SpriteKind.Player)
-mySprite.ax = 20
+mySprite.ax = 30
 mySprite.ay = 300
 tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 6))
 scene.cameraFollowSprite(mySprite)
@@ -237,7 +237,7 @@ let myEnemy = sprites.create(img`
     . . . . c c d d d 2 2 2 b b . . 
     . . . . . . c c c c c b b . . . 
     `, SpriteKind.Enemy)
-myEnemy.follow(mySprite, 65)
+myEnemy.follow(mySprite, 60)
 myEnemy.setPosition(0, 0)
 info.setScore(15)
 let coin = sprites.create(img`
