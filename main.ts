@@ -258,4 +258,4 @@ let coin = sprites.create(img`
     . . . f f 5 5 5 5 5 5 f f . . . 
     . . . . . f f f f f f . . . . . 
     `, SpriteKind.Projectile)
-coin.setPosition(1000, 80)
+coin.setPosition(976, 150)
