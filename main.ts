@@ -6,10 +6,10 @@ function Jumpy (mySprite: Sprite) {
         mySprite,
         [img`
             . . . . . . . . . . b 1 b . . . 
-            . . . . . . . 8 8 8 8 8 . . . . 
-            . . . . 8 8 8 8 8 8 8 8 8 8 . . 
-            . . . 8 8 8 8 8 8 8 8 8 8 8 . . 
-            . . 8 8 8 8 1 d 7 f 1 d 4 c . . 
+            . . . . . . . a a a a a . . . . 
+            . . . . a a a a a a a a a a . . 
+            . . . a a a a a a a a a a a . . 
+            . . a a a a 1 d 7 f 1 d 4 c . . 
             . . . . b 1 1 7 f f d d 4 4 4 b 
             . . . . b 1 1 d f b 4 4 4 4 b . 
             . . . b d 1 1 1 1 4 4 4 4 b . . 
@@ -237,7 +237,7 @@ let myEnemy = sprites.create(img`
     . . . . c c d d d 2 2 2 b b . . 
     . . . . . . c c c c c b b . . . 
     `, SpriteKind.Enemy)
-myEnemy.follow(mySprite, 70)
+myEnemy.follow(mySprite, 65)
 myEnemy.setPosition(0, 0)
 info.setScore(15)
 let coin = sprites.create(img`
@@ -258,4 +258,4 @@ let coin = sprites.create(img`
     . . . f f 5 5 5 5 5 5 f f . . . 
     . . . . . f f f f f f . . . . . 
     `, SpriteKind.Projectile)
-coin.setPosition(0, 0)
+coin.setPosition(300, 80)
