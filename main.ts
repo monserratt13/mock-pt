@@ -1,6 +1,6 @@
 function Jumpy (mySprite: Sprite) {
-    if (jump < 10) {
-        jump += 1
+    if (info.score() > 0) {
+        info.changeScoreBy(-1)
         mySprite.vy = -100
         animation.runImageAnimation(
         mySprite,
@@ -56,15 +56,23 @@ function Jumpy (mySprite: Sprite) {
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             `],
-        100,
-        true
+        2000,
+        false
         )
     }
 }
+scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileDarkGrass1, function (sprite, location) {
+    game.gameOver(false)
+})
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Jumpy(mySprite)
 })
-let jump = 0
+scene.onOverlapTile(SpriteKind.Player, sprites.skillmap.islandTile4, function (sprite, location) {
+    game.gameOver(false)
+})
+scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileDarkGrass2, function (sprite, location) {
+    game.gameOver(false)
+})
 let mySprite: Sprite = null
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -207,7 +215,31 @@ mySprite = sprites.create(img`
     . . . . c c d d d 1 1 1 b b . . 
     . . . . . . c c c c c b b . . . 
     `, SpriteKind.Player)
-mySprite.ax = 10
+mySprite.ax = 20
 mySprite.ay = 300
-jump = 0
+tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 6))
 scene.cameraFollowSprite(mySprite)
+let myEnemy = sprites.create(img`
+    . . . . . . . . . . b 2 b . . . 
+    . . . . . . . 8 8 8 8 8 8 . . . 
+    . . . . . . 8 8 8 8 8 8 8 . . . 
+    . . 8 8 8 8 8 8 8 8 8 8 8 . . . 
+    . . 8 8 8 8 8 d 7 f 2 d 4 c . . 
+    . . . . b 2 2 7 f f d d 4 4 4 b 
+    . . . . b 2 2 d f d 4 4 4 4 b . 
+    . . . b d 2 2 2 2 4 4 4 4 b . . 
+    . b b d d d 2 2 2 2 2 2 2 b . . 
+    b d d d b b b 2 2 2 2 2 2 2 b . 
+    c d d b 2 2 d c 2 2 2 2 2 2 b . 
+    c b b d 2 d c d 2 2 2 2 2 2 b . 
+    c b 2 2 b c d d 2 2 2 2 2 2 b . 
+    b b c c c d d d 2 2 2 2 2 d b . 
+    . . . . c c d d d 2 2 2 b b . . 
+    . . . . . . c c c c c b b . . . 
+    `, SpriteKind.Enemy)
+myEnemy.follow(mySprite, 70)
+myEnemy.setPosition(0, 0)
+info.setScore(15)
+if (mySprite.overlapsWith(myEnemy)) {
+    sprites.destroy(mySprite)
+}
