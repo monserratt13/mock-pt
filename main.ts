@@ -1,3 +1,9 @@
+scene.onHitWall(SpriteKind.Player, function (sprite, location) {
+	
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
+    game.gameOver(false)
+})
 function Jumpy (mySprite: Sprite) {
     if (info.score() > 0) {
         info.changeScoreBy(-1)
@@ -68,9 +74,6 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Jumpy(mySprite)
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.skillmap.islandTile4, function (sprite, location) {
-    game.gameOver(false)
-})
-scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileDarkGrass2, function (sprite, location) {
     game.gameOver(false)
 })
 let mySprite: Sprite = null
