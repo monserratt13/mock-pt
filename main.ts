@@ -1,10 +1,10 @@
-function Jumpy (mySprite: Sprite) {
+function Jumpy(mySprite: Sprite) {
     if (info.score() > 0) {
         info.changeScoreBy(-1)
         mySprite.vy = -100
         animation.runImageAnimation(
-        mySprite,
-        [img`
+            mySprite,
+            [img`
             . . . . . . . . . . b 1 b . . . 
             . . . . . . . a a a a a . . . . 
             . . . . a a a a a a a a a a . . 
@@ -21,7 +21,7 @@ function Jumpy (mySprite: Sprite) {
             . b 1 1 b c d d 1 1 1 1 1 d b . 
             b b c c c d d d d 1 1 1 b b . . 
             . . . c c c c c c c c b b . . . 
-            `,img`
+            `, img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -38,7 +38,7 @@ function Jumpy (mySprite: Sprite) {
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
-            `,img`
+            `, img`
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
@@ -56,8 +56,8 @@ function Jumpy (mySprite: Sprite) {
             . . . . . . . . . . . . . . . . 
             . . . . . . . . . . . . . . . . 
             `],
-        2000,
-        false
+            2000,
+            false
         )
     }
 }
@@ -81,11 +81,11 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, ot
 scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileDarkGrass2, function (sprite, location) {
     if (info.life() == 2) {
         text_list = [
-        "Try again!",
-        "1 more try!",
-        "Ow!",
-        "My feathers got caught...",
-        "Uh Oh!"
+            "Try again!",
+            "1 more try!",
+            "Ow!",
+            "My feathers got caught...",
+            "Uh Oh!"
         ]
         game.splash(text_list._pickRandom())
         Buddy.ax = 30
