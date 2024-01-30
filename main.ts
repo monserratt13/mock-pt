@@ -71,11 +71,30 @@ scene.onOverlapTile(SpriteKind.Player, sprites.skillmap.islandTile4, function (s
     game.gameOver(false)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
-    music.play(music.createSong(hex`00780004080200`), music.PlaybackMode.UntilDone)
+    music.play(music.stringPlayable("- G A B C5 C5 C5 C5 ", 280), music.PlaybackMode.UntilDone)
+    game.setGameOverEffect(true, effects.confetti)
+    game.setGameOverMessage(true, "You Win!")
+    game.setGameOverScoringType(game.ScoringType.HighScore)
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileDarkGrass2, function (sprite, location) {
-    game.gameOver(false)
+    if (info.life() == 2) {
+        info.changeLifeBy(-1)
+        game.splash(text_list)
+        text_list = [
+        "Try again!",
+        "1 more try!",
+        "Ow!",
+        "My feathers got caught...",
+        "Uh Oh!"
+        ]
+        tiles.placeOnTile(Buddy, tiles.getTileLocation(0, 6))
+        Butch.setPosition(0, 0)
+    } else {
+        game.gameOver(false)
+    }
 })
+let text_list: string[] = []
+let Butch: Sprite = null
 let Buddy: Sprite = null
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -222,7 +241,8 @@ Buddy.ax = 30
 Buddy.ay = 300
 tiles.placeOnTile(Buddy, tiles.getTileLocation(0, 6))
 scene.cameraFollowSprite(Buddy)
-let Butch = sprites.create(img`
+info.setLife(2)
+Butch = sprites.create(img`
     . . . . . . . . . . b 2 b . . . 
     . . . . . . . a a a a a a . . . 
     . . . . . . a a a a a a a . . . 
@@ -261,4 +281,7 @@ let coin = sprites.create(img`
     . . . f f 5 5 5 5 5 5 f f . . . 
     . . . . . f f f f f f . . . . . 
     `, SpriteKind.Projectile)
-coin.setPosition(975, 150)
+coin.setPosition(975, 110)
+forever(function () {
+    music.play(music.stringPlayable("G E F D E C D D ", 200), music.PlaybackMode.UntilDone)
+})
