@@ -65,15 +65,18 @@ scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileDarkGrass1, function (
     game.gameOver(false)
 })
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    Jumpy(mySprite)
+    Jumpy(Buddy)
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.skillmap.islandTile4, function (sprite, location) {
     game.gameOver(false)
 })
+sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
+    music.play(music.createSong(hex`00780004080200`), music.PlaybackMode.UntilDone)
+})
 scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileDarkGrass2, function (sprite, location) {
     game.gameOver(false)
 })
-let mySprite: Sprite = null
+let Buddy: Sprite = null
 scene.setBackgroundImage(img`
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
     9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999
@@ -197,7 +200,7 @@ scene.setBackgroundImage(img`
     7777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777777
     `)
 tiles.setCurrentTilemap(tilemap`level3`)
-mySprite = sprites.create(img`
+Buddy = sprites.create(img`
     . . . . . . . . . . b 1 b . . . 
     . . . . . . . a a a a a a . . . 
     . . . . . . a a a a a a a . . . 
@@ -215,11 +218,11 @@ mySprite = sprites.create(img`
     . . . . c c d d d 1 1 1 b b . . 
     . . . . . . c c c c c b b . . . 
     `, SpriteKind.Player)
-mySprite.ax = 30
-mySprite.ay = 300
-tiles.placeOnTile(mySprite, tiles.getTileLocation(0, 6))
-scene.cameraFollowSprite(mySprite)
-let myEnemy = sprites.create(img`
+Buddy.ax = 30
+Buddy.ay = 300
+tiles.placeOnTile(Buddy, tiles.getTileLocation(0, 6))
+scene.cameraFollowSprite(Buddy)
+let Butch = sprites.create(img`
     . . . . . . . . . . b 2 b . . . 
     . . . . . . . a a a a a a . . . 
     . . . . . . a a a a a a a . . . 
@@ -237,8 +240,8 @@ let myEnemy = sprites.create(img`
     . . . . c c d d d 2 2 2 b b . . 
     . . . . . . c c c c c b b . . . 
     `, SpriteKind.Enemy)
-myEnemy.follow(mySprite, 60)
-myEnemy.setPosition(0, 0)
+Butch.follow(Buddy, 60)
+Butch.setPosition(0, 0)
 info.setScore(15)
 let coin = sprites.create(img`
     . . . . . f f f f f f . . . . . 
@@ -258,4 +261,4 @@ let coin = sprites.create(img`
     . . . f f 5 5 5 5 5 5 f f . . . 
     . . . . . f f f f f f . . . . . 
     `, SpriteKind.Projectile)
-coin.setPosition(976, 150)
+coin.setPosition(975, 150)
