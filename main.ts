@@ -87,9 +87,13 @@ scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileDarkGrass2, function (
         "Uh Oh!"
         ]
         game.splash(text_list._pickRandom())
+        Buddy.ax = 30
+        Buddy.ay = 300
         tiles.placeOnTile(Buddy, tiles.getTileLocation(0, 6))
         Butch.setPosition(0, 0)
         info.changeLifeBy(-1)
+        Butch.follow(Buddy, 60)
+        Butch.setPosition(0, 0)
     } else {
         game.gameOver(false)
     }
