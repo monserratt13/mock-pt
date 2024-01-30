@@ -1,3 +1,19 @@
+scene.onHitWall(SpriteKind.Player, function (sprite, location) {
+    info.changeLifeBy(-1)
+    text_list = [
+    "Try again!",
+    "1 more try!",
+    "Ow!",
+    "My feathers got caught...",
+    "Uh Oh!"
+    ]
+    game.splash(text_list._pickRandom())
+    tiles.placeOnTile(Buddy, tiles.getTileLocation(0, 6))
+    Buddy.vy = 0
+    Buddy.vx = 0
+    Butch.setPosition(0, 0)
+    info.setScore(15)
+})
 function Jumpy (mySprite: Sprite) {
     if (info.score() > 0) {
         info.changeScoreBy(-1)
@@ -67,9 +83,6 @@ scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileDarkGrass1, function (
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Jumpy(Buddy)
 })
-scene.onOverlapTile(SpriteKind.Player, sprites.skillmap.islandTile4, function (sprite, location) {
-    game.gameOver(false)
-})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     music.play(music.stringPlayable("- G A B C5 C5 C5 C5 ", 280), music.PlaybackMode.InBackground)
     game.setGameOverEffect(true, effects.confetti)
@@ -78,26 +91,9 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, ot
     game.gameOver(true)
     music.stopAllSounds()
 })
-scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileDarkGrass2, function (sprite, location) {
-    if (info.life() == 2) {
-        text_list = [
-        "Try again!",
-        "1 more try!",
-        "Ow!",
-        "My feathers got caught...",
-        "Uh Oh!"
-        ]
-        game.splash(text_list._pickRandom())
-        Buddy.ax = 30
-        Buddy.ay = 300
-        tiles.placeOnTile(Buddy, tiles.getTileLocation(0, 6))
-        Butch.setPosition(0, 0)
-        info.changeLifeBy(-1)
-        Butch.follow(Buddy, 60)
-        Butch.setPosition(0, 0)
-    } else {
-        game.gameOver(false)
-    }
+info.onLifeZero(function () {
+    game.gameOver(false)
+    game.reset()
 })
 let text_list: string[] = []
 let Butch: Sprite = null
