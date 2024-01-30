@@ -71,12 +71,11 @@ scene.onOverlapTile(SpriteKind.Player, sprites.skillmap.islandTile4, function (s
     game.gameOver(false)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
-    music.play(music.stringPlayable("- G A B C5 C5 C5 C5 ", 280), music.PlaybackMode.InBackground)
+    music.play(music.stringPlayable("- G A B C5 C5 C5 C5 ", 280), music.PlaybackMode.UntilDone)
     game.setGameOverEffect(true, effects.confetti)
     game.setGameOverMessage(true, "You Win!")
     game.setGameOverScoringType(game.ScoringType.HighScore)
     game.gameOver(true)
-    music.stopAllSounds()
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileDarkGrass2, function (sprite, location) {
     if (info.life() == 2) {
