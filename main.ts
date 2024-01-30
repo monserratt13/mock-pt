@@ -90,54 +90,15 @@ scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileDarkGrass2, function (
         Buddy.ax = 30
         Buddy.ay = 300
         tiles.placeOnTile(Buddy, tiles.getTileLocation(0, 6))
-        scene.cameraFollowSprite(Buddy)
-        info.setLife(2)
-        Butch = sprites.create(img`
-            . . . . . . . . . . b 2 b . . . 
-            . . . . . . . a a a a a a . . . 
-            . . . . . . a a a a a a a . . . 
-            . . a a a a a a a a a a a . . . 
-            . . a a a a a d 7 f 2 d 4 c . . 
-            . . . . b 2 2 7 f f d d 4 4 4 b 
-            . . . . b 2 2 d f d 4 4 4 4 b . 
-            . . . b d 2 2 2 2 4 4 4 4 b . . 
-            . b b d d d 2 2 2 2 2 2 2 b . . 
-            b d d d b b b 2 2 2 2 2 2 2 b . 
-            c d d b 2 2 d c 2 2 2 2 2 2 b . 
-            c b b d 2 d c d 2 2 2 2 2 2 b . 
-            c b 2 2 b c d d 2 2 2 2 2 2 b . 
-            b b c c c d d d 2 2 2 2 2 d b . 
-            . . . . c c d d d 2 2 2 b b . . 
-            . . . . . . c c c c c b b . . . 
-            `, SpriteKind.Enemy)
+        Butch.setPosition(0, 0)
+        info.changeLifeBy(-1)
         Butch.follow(Buddy, 60)
         Butch.setPosition(0, 0)
-        info.setScore(15)
-        coin = sprites.create(img`
-            . . . . . f f f f f f . . . . . 
-            . . . f f 5 5 5 5 5 5 f f . . . 
-            . . f 5 5 9 9 9 9 9 9 5 5 f . . 
-            . f 5 9 3 5 5 5 5 5 5 9 9 5 f . 
-            . f 5 3 3 3 9 9 9 9 5 5 9 5 f . 
-            f 5 9 5 3 5 9 5 5 9 5 5 5 9 5 f 
-            f 5 9 5 5 5 9 5 5 9 5 5 5 9 5 f 
-            f 5 9 5 5 5 9 5 5 9 5 5 5 9 5 f 
-            f 5 9 5 5 5 9 5 5 9 5 5 5 9 5 f 
-            f 5 9 5 5 5 9 5 5 9 5 5 5 9 5 f 
-            f 5 9 5 5 5 9 5 5 9 5 5 3 9 5 f 
-            . f 5 9 5 5 9 9 9 9 5 3 3 3 f . 
-            . f 5 9 9 5 5 5 5 5 5 9 3 5 f . 
-            . . f 5 5 9 9 9 9 9 9 5 5 f . . 
-            . . . f f 5 5 5 5 5 5 f f . . . 
-            . . . . . f f f f f f . . . . . 
-            `, SpriteKind.Projectile)
-        coin.setPosition(975, 110)
     } else {
         game.gameOver(false)
     }
 })
 let text_list: string[] = []
-let coin: Sprite = null
 let Butch: Sprite = null
 let Buddy: Sprite = null
 scene.setBackgroundImage(img`
@@ -307,7 +268,7 @@ Butch = sprites.create(img`
 Butch.follow(Buddy, 60)
 Butch.setPosition(0, 0)
 info.setScore(15)
-coin = sprites.create(img`
+let coin = sprites.create(img`
     . . . . . f f f f f f . . . . . 
     . . . f f 5 5 5 5 5 5 f f . . . 
     . . f 5 5 9 9 9 9 9 9 5 5 f . . 
