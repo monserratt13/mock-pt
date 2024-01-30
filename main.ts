@@ -75,11 +75,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, ot
     game.setGameOverEffect(true, effects.confetti)
     game.setGameOverMessage(true, "You Win!")
     game.setGameOverScoringType(game.ScoringType.HighScore)
+    game.gameOver(true)
 })
 scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileDarkGrass2, function (sprite, location) {
     if (info.life() == 2) {
-        info.changeLifeBy(-1)
-        game.splash(text_list)
         text_list = [
         "Try again!",
         "1 more try!",
@@ -87,8 +86,10 @@ scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileDarkGrass2, function (
         "My feathers got caught...",
         "Uh Oh!"
         ]
+        game.splash(text_list._pickRandom())
         tiles.placeOnTile(Buddy, tiles.getTileLocation(0, 6))
         Butch.setPosition(0, 0)
+        info.changeLifeBy(-1)
     } else {
         game.gameOver(false)
     }
