@@ -1,3 +1,23 @@
+scene.onOverlapTile(SpriteKind.Player, img`
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    . . . . . . . . . . . . . . . . 
+    `, function (sprite, location) {
+    game.gameOver(false)
+})
 function Jumpy (mySprite: Sprite) {
     if (info.score() > 0) {
         info.changeScoreBy(-1)
@@ -95,9 +115,6 @@ scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileDarkGrass2, function (
     } else {
         game.gameOver(false)
     }
-})
-scene.onOverlapTile(SpriteKind.Player, , function (sprite, location) {
-    game.gameOver(false)
 })
 let text_list: string[] = []
 let Butch: Sprite = null
