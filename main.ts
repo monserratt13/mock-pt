@@ -67,9 +67,6 @@ scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileDarkGrass1, function (
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     Jumpy(Buddy)
 })
-scene.onOverlapTile(SpriteKind.Player, sprites.skillmap.islandTile4, function (sprite, location) {
-    game.gameOver(false)
-})
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Projectile, function (sprite, otherSprite) {
     music.play(music.stringPlayable("- G A B C5 C5 C5 C5 ", 280), music.PlaybackMode.InBackground)
     game.setGameOverEffect(true, effects.confetti)
@@ -98,6 +95,9 @@ scene.onOverlapTile(SpriteKind.Player, sprites.castle.tileDarkGrass2, function (
     } else {
         game.gameOver(false)
     }
+})
+scene.onOverlapTile(SpriteKind.Player, , function (sprite, location) {
+    game.gameOver(false)
 })
 let text_list: string[] = []
 let Butch: Sprite = null
